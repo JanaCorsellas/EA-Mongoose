@@ -1,6 +1,6 @@
 //pretèn ser la configuració
 
-import { Schema, model } from 'mongoose';
+import { Schema, Types, model } from 'mongoose';
 
 //necessitem una interfaç (tots els objectes JSON que compleixin aquesta interfície podran ser tractats com a IUser)
 
@@ -9,7 +9,7 @@ export interface IUser {
   name: string;
   email: string;
   avatar?: string;
-  _id?: string;
+  _id?: Types.ObjectId;
 }
 
 //també necessitem guardar quina és la estructura de dades que jo vull guardar dins el mongo, esquema
@@ -24,7 +24,7 @@ const userSchema = new Schema<IUser>({ //(condicions que ha de complir el docume
 //ajuntem les dues peces i generem un model d'usuari nou
 
 // 3. Create a Model.
-export const UserModel = model('User', userSchema);
+export const User = model('User', userSchema);
 
 
 //és un esquema de mongo i és una interfaç de usuari de typescript, per tant podem utilitzar-lo per a les dues coses (mongo i js)
