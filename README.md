@@ -51,3 +51,8 @@ Ejecutar JS
 ```
 node dist/mongoogse.js
 ```
+
+Referències:
+[1] https://mongoosejs.com/docs/populate.html
+[2] https://www.freecodecamp.org/espanol/news/introduccion-a-mongoose-para-mongodb/
+[3] Toni
