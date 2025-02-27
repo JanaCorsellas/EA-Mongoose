@@ -69,6 +69,12 @@ async function main() {
     return await RutaModel.findByIdAndUpdate(id, ruta, {new: true});
   }
 
+  //contr el número de rutes utilitzant $count
+  const countRutes = async () => {
+    const result = await RutaModel.aggregate([{$count: 'total'}]);
+    return result.length > 0 ? result[0].total : 0;
+  }
+
   //llistar rutes
   const listRutes = async () =>{
     return await RutaModel.find().select('nom');
@@ -98,6 +104,9 @@ async function main() {
   
   const modificarRuta = await updateRuta(novaRuta._id, {dificultat: "difícil"});
   console.log("Ruta modificada", modificarRuta);
+
+  const totalRutes = await countRutes();
+  console.log("Nombre total de rutes a la bbdd:", totalRutes);
 
   const llistaRutes = await listRutes();
   console.log("Llista de rutes", llistaRutes);
